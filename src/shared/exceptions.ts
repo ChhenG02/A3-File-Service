@@ -39,8 +39,8 @@ export class ErrorsFilter {
       // Find the status code for the current error
       const status_code = exceptionMap.get(err.constructor) || 500; // Default to 500 if error type is not in the map
 
-      // Send the response
-      return res.status(status_code).send({
+      // Send the response without returning it
+      res.status(status_code).send({
         status_code: status_code,
         message: err?.message || "Something when wrong",
         error: err?.error || undefined,
